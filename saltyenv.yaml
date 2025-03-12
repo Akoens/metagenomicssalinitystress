@@ -1,4 +1,4 @@
-name: saltyenv2
+name: saltyenv
 channels:
   - bioconda
   - conda-forge
@@ -58,4 +58,3 @@ dependencies:
   - xz-gpl-tools=5.6.4=hbcc6ac9_0
   - xz-tools=5.6.4=hb9d3cd8_0
   - yaml=0.2.5=h7f98852_2
-prefix: /home/afkoens/.conda/envs/saltyenv2
