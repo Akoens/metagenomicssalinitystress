@@ -1,28 +1,44 @@
-# STEPS:
-# Get all fastq files in directory
-# push fastq through kaiju-multi? 
+"""
+"""
+
+import os
+import glob
+
+
+
+def find_fastq_files(sample_dirs):
+    fastq_files = []
+    for sample_dir in sample_dirs:
+        files = glob.glob(os.path.join(sample_dir, "*.fastq.gz"))
+        fastq_files.extend(files)
+    return fastq_files
+
+
+def get_kaiju_inputs(wildcards):
+    sample_dirs = expand("{seq_dir}{sample_group}", seq_dir=config["seq_dirs"], sample_group=config["sample_groups"]) 
+    return find_fastq_files(sample_dirs)
 
 
 configfile: "config.yaml"
 
 rule all:
     input:
-        expand("test.{sample_dir}.txt", sample_dir=config["sample_dirs"])
+        get_kaiju_inputs
 
 
-rule kraken:
-# One rule to handle all the samples in a singel directory.
-# Another rule will need to be added that can then handle multiple directories
-# Lastly a function that can scan a directory for fastq files that can be passed to the super > kaiju rules.
+rule decompress:
     input:
-        expand()
-
+        "{seq_dir}{sample_group}{sample}.fastq.gz"
     output:
-        # would the output be per sample or per directory?
+        "outputs/kaiju/{seq_dir}{sample_group}{sample}.fastq"
     shell:
-        "kaiju -t {Kaiju_nodes} -f {kaiju_fmi} -i {sample_file}"
+        "gzip -c {sample} > outputs/kaiju/decompressed_samples/{seq-dir}{sample_group}{sample}.fastq"
+    
 
-
-rule list_samples:
+rule run_kaiju:
+    input:
+        "outputs/kaiju/decompressed_samples/{seq_dir}{sample_group}{sample}.fastq"
+    output:
+        "outputs/kaiju/{seq_dir}{sample_group}{sample}.out"
     shell:
-        "for dir in {config[sample_dirs]}ls {data_dir}{sample_dir}"
+        "kaiju -t {config[kaiju_index_nodes]} -f {config[kaiju_index_fmi]} -i {input} -o {output}"
