@@ -19,20 +19,22 @@ def get_kaiju_inputs(wildcards):
     return find_fastq_files(sample_dirs)
 
 
-configfile: "config.yaml"
+configfile: "config/config.yaml"
+
+
+# rule concat_data
+# rule decompress_data
+# rule kaiju
+# rule kraken
+# rule cleanup
+# 
+
+
 
 rule all:
     input:
         get_kaiju_inputs
 
-
-rule decompress:
-    input:
-        "{seq_dir}{sample_group}{sample}.fastq.gz"
-    output:
-        "outputs/kaiju/{seq_dir}{sample_group}{sample}.fastq"
-    shell:
-        "gzip -c {sample} > outputs/kaiju/decompressed_samples/{seq-dir}{sample_group}{sample}.fastq"
     
 
 rule run_kaiju:
@@ -41,4 +43,4 @@ rule run_kaiju:
     output:
         "outputs/kaiju/{seq_dir}{sample_group}{sample}.out"
     shell:
-        "kaiju -t {config[kaiju_index_nodes]} -f {config[kaiju_index_fmi]} -i {input} -o {output}"
+        "kaiju-multi -t {config[kaiju_index_nodes]} -f {config[kaiju_index_fmi]} -i $(ls --format=commas) -o {output}"
