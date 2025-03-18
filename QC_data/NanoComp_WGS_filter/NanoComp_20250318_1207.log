@@ -1,0 +1,30 @@
+2025-03-18 12:07:53,750 NanoComp 1.24.2 started with arguments Namespace(threads=10, outdir='/homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter', prefix='', verbose=False, raw=False, store=False, tsv_stats=False, no_static=False, readtype='1D', maxlength=None, minlength=None, barcoded=False, split_runs=False, format=['png'], names=None, colors=None, plot='box', title=None, dpi=100, fasta=None, fastq=['zoet_20_30cm_rep1.fastq', 'zoet_20_30cm_rep2.fastq', 'zout_20_30cm_rep1.fastq', 'zout_20_30cm_rep2.fastq'], fastq_rich=None, summary=None, bam=None, ubam=None, cram=None, pickle=None, feather=None, path='/homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/')
+2025-03-18 12:07:53,750 Python version is: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:38:13) [GCC 12.3.0]
+2025-03-18 12:07:53,849 Nanoget: Starting to collect statistics from plain fastq file.
+2025-03-18 12:07:53,850 Nanoget: Starting to collect statistics from plain fastq file.
+2025-03-18 12:07:53,850 Nanoget: Starting to collect statistics from plain fastq file.
+2025-03-18 12:07:53,850 Nanoget: Starting to collect statistics from plain fastq file.
+2025-03-18 12:08:03,238 Reduced DataFrame memory usage from 1.6567878723144531Mb to 1.6567878723144531Mb
+2025-03-18 12:08:03,844 Reduced DataFrame memory usage from 1.9189338684082031Mb to 1.9189338684082031Mb
+2025-03-18 12:08:05,812 Reduced DataFrame memory usage from 1.9967231750488281Mb to 1.9967231750488281Mb
+2025-03-18 12:09:24,907 Reduced DataFrame memory usage from 28.21243667602539Mb to 28.21243667602539Mb
+2025-03-18 12:09:25,455 Nanoget: Gathered all metrics of 2214093 reads
+2025-03-18 12:09:25,457 Using sequenced read lengths for plotting.
+2025-03-18 12:09:30,686 NanoComp: Creating barplots for number of reads and total throughput.
+2025-03-18 12:09:34,046 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_number_of_reads  as png (or png for --legacy)
+2025-03-18 12:09:37,279 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_total_throughput  as png (or png for --legacy)
+2025-03-18 12:09:40,138 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_N50  as png (or png for --legacy)
+2025-03-18 12:09:40,144 NanoComp: Creating box plot for lengths.
+2025-03-18 12:09:44,644 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_lengths_box  as png (or png for --legacy)
+2025-03-18 12:09:44,658 NanoComp: Creating box plot for log length.
+2025-03-18 12:09:48,230 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_log_length_box  as png (or png for --legacy)
+2025-03-18 12:09:48,232 NanoComp: Creating box plot for quals.
+2025-03-18 12:09:51,516 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_quals_box  as png (or png for --legacy)
+2025-03-18 12:09:54,222 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_OverlayHistogram  as png (or png for --legacy)
+2025-03-18 12:09:56,926 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_OverlayHistogram_Normalized  as png (or png for --legacy)
+2025-03-18 12:09:59,854 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_OverlayHistogram_Weighted  as png (or png for --legacy)
+2025-03-18 12:10:03,015 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_OverlayLogHistogram  as png (or png for --legacy)
+2025-03-18 12:10:05,856 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_OverlayLogHistogram_Normalized  as png (or png for --legacy)
+2025-03-18 12:10:08,673 Saved /homes/rreilman/jaar2/kwartaal3/ZoutStress/metagenomicssalinitystress/QC_data/NanoComp_WGS_filter/NanoComp_OverlayLogHistogram_Weighted  as png (or png for --legacy)
+2025-03-18 12:10:08,675 Writing html report.
+2025-03-18 12:10:08,748 Succesfully processed all input.
