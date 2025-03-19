@@ -1,24 +1,6 @@
 """
 """
 
-import os
-import glob
-
-
-
-def find_fastq_files(sample_dirs):
-    fastq_files = []
-    for sample_dir in sample_dirs:
-        files = glob.glob(os.path.join(sample_dir, "*.fastq.gz"))
-        fastq_files.extend(files)
-    return fastq_files
-
-
-def get_kaiju_inputs(wildcards):
-    sample_dirs = expand("{seq_dir}{sample_group}", seq_dir=config["seq_dirs"], sample_group=config["sample_groups"]) 
-    return find_fastq_files(sample_dirs)
-
-
 configfile: "config/config.yaml"
 
 
@@ -33,14 +15,20 @@ configfile: "config/config.yaml"
 
 rule all:
     input:
-        get_kaiju_inputs
-
+        expand("outputs/kaiju/{sample}.out", sample=config["samples"])
     
 
 rule run_kaiju:
     input:
-        "outputs/kaiju/decompressed_samples/{seq_dir}{sample_group}{sample}.fastq"
+        nodes =config["kaiju_index_nodes"]
+        fmi = config["kaiju_index_fmi"]
+        threads = config["threads"]
+
+
+        expand("data/{sample}.fastq", sample=config["samples"])
     output:
-        "outputs/kaiju/{seq_dir}{sample_group}{sample}.out"
+        "outputs/kaiju/{sample}.out"
     shell:
-        "kaiju-multi -t {config[kaiju_index_nodes]} -f {config[kaiju_index_fmi]} -i $(ls --format=commas) -o {output}"
+        "kaiju-multi -z {threads} -t {input.nodes} -f {input.fmi} -i $(ls --format=commas) -o {output}"
+    conda:
+    
